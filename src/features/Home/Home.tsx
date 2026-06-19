@@ -1,14 +1,20 @@
-import { CarouselComponente } from "@/shared/Carousel/Carousel";
+import { CarouselChannel } from "@/shared/CarouselChannels/Carousel";
+import { CarouselMusic } from "@/shared/CarouselMusics/Carousel";
 
 export function Home() {
 
     return (
         <div>
-            
+            <CarouselChannel search="Lo-fi" ></CarouselChannel>
 
-            <CarouselComponente search="Funk" />
-            <CarouselComponente search="Sertanejo"/>
-            <CarouselComponente search="Jazz" />
+            <CarouselMusic search="Funk" />
+
+            <CarouselChannel search="Rock" ></CarouselChannel>
+            <CarouselMusic search="Sertanejo"/>
+
+            <CarouselMusic search="Jazz" />
+
+            <CarouselChannel search="Samba" ></CarouselChannel>
 
 
         </div>
