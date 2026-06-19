@@ -1,10 +1,14 @@
 import { CarouselChannel } from "@/shared/CarouselChannels/Carousel";
 import { CarouselMusic } from "@/shared/CarouselMusics/Carousel";
+import { Header } from "@/shared/Header/Header";
 
 export function Home() {
 
     return (
         <div>
+            <Header></Header>
+
+
             <CarouselChannel search="Lo-fi" ></CarouselChannel>
 
             <CarouselMusic search="Funk" />
@@ -15,7 +19,6 @@ export function Home() {
             <CarouselMusic search="Jazz" />
 
             <CarouselChannel search="Samba" ></CarouselChannel>
-
 
         </div>
     )
