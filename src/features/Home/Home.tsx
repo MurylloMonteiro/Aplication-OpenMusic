@@ -4,11 +4,11 @@ export function Home() {
 
     return (
         <div>
-            <h1>Teste componente</h1>
+            
 
-            <CarouselComponente />
-            <CarouselComponente />
-            <CarouselComponente />
+            <CarouselComponente search="Funk" />
+            <CarouselComponente search="Sertanejo"/>
+            <CarouselComponente search="Jazz" />
 
 
         </div>
