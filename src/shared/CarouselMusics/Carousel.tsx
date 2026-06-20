@@ -26,7 +26,7 @@ export function CarouselMusic({search}: {search:string}) {
                 <CarouselContent className="px-5">
                     {musicArry?.map((i: any, index) => (
                         <CarouselItem key={index} className=" basis-[35%] p-1 m-1 sm:basis-[15%]">
-                            <Card className="bg-gray-950 shadow-2xl overflow-hidden p-0 min-h-[180px] sm:min-h-[250px] ">
+                            <Card className="bg-gray-950 shadow-2xl overflow-hidden p-0 min-h-[180px] sm:min-h-[100%] ">
                                 <CardContent className="flex flex-col p-0 gap-0 overflow-hidden">
                                     <img className="w-full h-[90px]  object-cover sm:h-[30%]" src={i.thumbnails[1]} alt="" />
 
