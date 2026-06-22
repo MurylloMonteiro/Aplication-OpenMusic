@@ -1,0 +1,15 @@
+@keyframes moveX {
+  0% {
+    transform: translateX(400px);
+  }
+
+  100% {
+    opacity: 100;
+    transform: translateX(-400px);
+  }
+}
+
+
+.box {
+  animation: moveX 10s linear infinite;
+}
