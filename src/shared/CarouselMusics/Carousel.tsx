@@ -4,18 +4,19 @@ import { useEffect, useState } from "react"
 import { SearchMusic } from "./Service"
 
 import "./Style.css"
+import { useNavigate } from "react-router"
 
-export function CarouselMusic({search}: {search:string}) {
+export function CarouselMusic({ search }: { search: string }) {
 
     const [musicArry, setMusicArray] = useState(Array)
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         SearchMusic(search).then((data: any) => {
             setMusicArray(data.data)
         })
-    
-    },[])
+
+    }, [])
 
     return (
         <div className=" py-1" >
@@ -26,16 +27,18 @@ export function CarouselMusic({search}: {search:string}) {
                 <CarouselContent className="px-5">
                     {musicArry?.map((i: any, index) => (
                         <CarouselItem key={index} className=" basis-[35%] p-1 m-1 sm:basis-[15%]">
-                            <Card className="bg-gray-950 shadow-2xl overflow-hidden p-0 min-h-[180px] sm:min-h-[100%] ">
-                                <CardContent className="flex flex-col p-0 gap-0 overflow-hidden">
-                                    <img className="w-full h-[90px]  object-cover sm:h-[30%]" src={i.thumbnails[1]} alt="" />
+                            <button onClick={() => navigate(`/play?id=${i.id}&title=${i.title}`)} >
+                                <Card className="bg-gray-950 shadow-2xl overflow-hidden p-0 min-h-[180px] sm:min-h-[100%] ">
+                                    <CardContent className="flex flex-col p-0 gap-0 overflow-hidden">
+                                        <img className="w-full h-[90px]  object-cover sm:h-[30%]" src={i.thumbnails[1]} alt="" />
 
-                                    <div className="p-1 flex flex-col px-2">
-                                        <p className="text-[90%] mt-auto line-clamp-3 font-bold m-0.5">{i.title}</p>
-                                        <p className="text-[80%]  text-gray-400 truncate">{i.channel}</p>
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                        <div className="p-1 flex flex-col px-2">
+                                            <p className="text-[90%] mt-auto line-clamp-3 font-bold m-0.5">{i.title}</p>
+                                            <p className="text-[80%]  text-gray-400 truncate">{i.channel}</p>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </button>
                         </CarouselItem>
                     ))}
                 </CarouselContent>

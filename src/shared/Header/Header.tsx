@@ -1,13 +1,15 @@
 import { Search, User } from "lucide-react"
 import { useNavigate } from "react-router"
 
-export function Header(){
+export function Header() {
 
     const navigate = useNavigate()
 
     return (
         <div className="flex justify-between  items-center bg-gray-950 p-1 shadow-sm" >
-            <h1 className="mx-3 text-3xl font-bold text-orange-600 sm:text-5xl" >OpenMusic</h1>
+            <button  onClick={() => navigate("/")}>
+                <h1 className="mx-3 text-3xl font-bold text-orange-600 sm:text-5xl" >OpenMusic</h1>
+            </button>
 
 
             <div className="mx-5 flex items-center ">
