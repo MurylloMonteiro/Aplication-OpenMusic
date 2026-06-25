@@ -1,15 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Header } from "@/shared/Header/Header";
-import { Play, SkipBack, SkipForward, Heart, ListPlus, Repeat, Shuffle } from "lucide-react";
+import { Play, SkipBack, SkipForward, Heart, ListPlus, Repeat, Shuffle, Image, Video } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { GetVideoURL } from "./Service";
 
 import './Style.css'
 import { useParams, useSearchParams } from "react-router";
 
-export function Player({ musicTitle, musicID }: { musicTitle: String, musicID: any }) {
+export function Player() {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [hidenVideo, setHidenVideo] = useState(true)
     const [videoURL, setVideoURL] = useState("")
     const [value, setValue] = useState([0]);
 
@@ -46,15 +47,23 @@ export function Player({ musicTitle, musicID }: { musicTitle: String, musicID: a
 
     return (
         <>
-            <Header />
-            <div className="flex flex-col justify-center mt-[10%]">
+            <div className="w-screen h-screen flex flex-col sm: items-center justify-center ">
+                <Header />
 
-                <Card className="mx-8 p-0 object-cover mb-[20%]" >
-                    <CardContent className="bg-black p-0 flex h-[300px]">
+                <Card className="mx-8  p-0 object-cover w-[90%] sm:w-[60%] h-[55%] mb-[10%]" >
+                    <CardContent className="bg-black p-0 flex h-full justify-center  ">
+                        <div className="bg-amber-500 fixed justify-between flex w-[10%] mt-5">
+                            <button onClick={() => setHidenVideo(true)}>
+                                <Image className="size-10  mx-5" />
+                            </button>
+                            <button onClick={() => setHidenVideo(false)}>
+                                <Video  className="size-10  mx-5"/>
+                            </button>
+                        </div>
 
-                        <video ref={videoRef} autoPlay muted className="" src={videoURL} />
+                        <video ref={videoRef} autoPlay muted className={hidenVideo ? "hidden" : " " } src={videoURL} />
 
-                        <img className="object-cover hidden" src="https://static.poder360.com.br/uploads/2026/04/Manoel-Gomes-7-abr-2026-848x477.jpg" alt="" />
+                        <img className={hidenVideo ? "" : "hidden" } src={playParams.get("thumb")!} alt="" />
 
                     </CardContent>
                 </Card>
@@ -63,41 +72,43 @@ export function Player({ musicTitle, musicID }: { musicTitle: String, musicID: a
                     <p className="text-2xl whitespace-nowrap font-bold  animate-[moveX_5s_linear_infinite]" >{playParams.get("title")}</p>
                 </div>
 
-                <div className=" flex justify-center flex-col h-[200px]  " >
-                    <div className="flex mx-10 justify-between" >
-                        <div className="flex gap-5">
+                <div className=" flex justify-center flex-col w-full mb-[2%]  " >
+                    <div className="flex mx-10 justify-between sm:mx-30" >
+                        <div className="flex gap-5 sm:gap-20">
                             <button>
-                                <Heart className="size-8" />
+                                <Heart className="size-8 sm:size-12" />
                             </button>
                             <button>
-                                <ListPlus className="size-8" />
+                                <ListPlus className="size-8 sm:size-12" />
                             </button>
                         </div>
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 sm:gap-20">
 
                             <button>
-                                <Repeat className="size-8" />
+                                <Repeat className="size-8 sm:size-12" />
                             </button>
                             <button>
-                                <Shuffle className="size-8" />
+                                <Shuffle className="size-8 sm:size-12" />
                             </button>
                         </div>
                     </div>
 
                     <div className="flex justify-center items-center gap-8 my-6" >
                         <button>
-                            <SkipBack className="size-10 " />
+                            <SkipBack className="size-10   sm: size-16" />
                         </button>
-                        <button onClick={() => handlePlay()} className="bg-orange-500 flex shadow-lg justify-center items-center w-[75px] h-[75px] rounded-full " >
-                            <Play className=" size-8 " />
+                        <button onClick={() => handlePlay()} className="bg-orange-500 flex shadow-lg justify-center items-center w-[75px] h-[75px] rounded-full sm:w-[100px] h-[100px] " >
+                            <Play className=" size-8 sm:size-12" />
                         </button>
                         <button>
-                            <SkipForward className="size-10  " />
+                            <SkipForward className="size-10  sm: size-16" />
                         </button>
                     </div>
 
-                    <div className="bg-orange-300 shadow-ls rounded-full mx-10">
+                    <div className="bg-orange-300 shadow-ls rounded-full mx-10 mb-auto  sm:mx-30">
                         <Slider
+
+                            className=""
                             min={0}
                             max={videoRef.current?.duration || 0}
                             step={1}
