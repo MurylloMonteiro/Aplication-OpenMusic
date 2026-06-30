@@ -80,6 +80,7 @@ export function CarouselMusic({ search }: { search: string }) {
                 >
                   <Card
                     className="
+                      dark
                       p-0
                       h-full
                       overflow-hidden
