@@ -16,6 +16,7 @@ export function Search() {
         <>
             <Input></Input>
 
+
             <Recommended></Recommended>
 
         </>

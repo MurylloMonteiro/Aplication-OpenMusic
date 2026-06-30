@@ -187,7 +187,7 @@ export function CarouselMusic({ search }: { search: string }) {
           })}
         </CarouselContent>
 
-        {/* Navegação Desktop */}
+    
         <CarouselPrevious
           className="
             hidden
